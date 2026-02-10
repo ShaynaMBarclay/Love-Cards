@@ -201,3 +201,48 @@ button {
     opacity: 0;
   }
 }
+
+/* Big heart animation */
+.big-heart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 120px;
+  transform: translate(-50%, -50%) scale(0);
+  animation: heartPop 1.2s forwards;
+  z-index: 10;
+  pointer-events: none;
+  text-shadow: 0 0 20px #ffc0cb, 0 0 40px #ffc0cb, 0 0 60px #ffc0cb;
+}
+
+@keyframes heartPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Fade-in animation for YAY screen */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
