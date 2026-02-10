@@ -11,10 +11,14 @@ export default function App() {
   const [showBigHeart, setShowBigHeart] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
 
+  // Detect mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   const handleNo = () => {
     setShowWrong(true);
     setHideNo(true);
 
+    // Hide popup automatically after 1.2s
     setTimeout(() => {
       setShowWrong(false);
       setHideNo(false);
@@ -33,31 +37,31 @@ export default function App() {
 
   return (
     <div className="page">
-   <div className="hearts-container">
-  {[...Array(30)].map((_, i) => {
-    const color = Math.random() > 0.5 ? "#ff4f8b" : "#ff6b81";
-    const size = Math.random() * 24 + 16; // 16px to 40px
-    const top = Math.random() * 100; // starting vertical position
+      {/* Floating hearts */}
+      <div className="hearts-container">
+        {[...Array(30)].map((_, i) => {
+          const color = Math.random() > 0.5 ? "#ff4f8b" : "#ff6b81";
+          const size = Math.random() * 24 + 16; // 16px to 40px
+          const top = Math.random() * 100; // starting vertical position
 
-    return (
-      <span
-        key={i}
-        className="heart-char"
-        style={{
-          "--left": Math.random() * 100 + "vw",
-          "--size": size + "px",
-          "--color": color,
-          "--top": top + "vh",   
-          "--delay": Math.random() * 5 + "s",
-          "--duration": Math.random() * 5 + 5 + "s",
-        }}
-      >
-        ♡
-      </span>
-    );
-  })}
-</div>
-
+          return (
+            <span
+              key={i}
+              className="heart-char"
+              style={{
+                "--left": Math.random() * 100 + "vw",
+                "--size": size + "px",
+                "--color": color,
+                "--top": top + "vh",
+                "--delay": Math.random() * 5 + "s",
+                "--duration": Math.random() * 5 + 5 + "s",
+              }}
+            >
+              ♡
+            </span>
+          );
+        })}
+      </div>
 
       {/* Big heart animation overlay */}
       {showBigHeart && <div className="big-heart">❤️</div>}
@@ -69,13 +73,13 @@ export default function App() {
             <>
               <h1 className="title">YAYYY 💕</h1>
               <p className="message">
-                  You just made my heart do a happy dance! 🥰  
-                  Every time I think of you, I get all giddy like a kid on candy day 🍬.  
-                  Thank you for being the sweetest part of my life, the jelly to my peanut butter,  
-                  the twinkle in my silly little eyes ✨💖  
-                  I’m so lucky to have you… and I promise to keep making you smile  
-                  (even if it’s just with bad jokes and too many hearts 😘💌)  
-                  Happy Valentine’s Day, my love!
+                You just made my heart do a happy dance! 🥰  
+                Every time I think of you, I get all giddy like a kid on candy day 🍬.  
+                Thank you for being the sweetest part of my life, the jelly to my peanut butter,  
+                the twinkle in my silly little eyes ✨💖  
+                I’m so lucky to have you… and I promise to keep making you smile  
+                (even if it’s just with bad jokes and too many hearts 😘💌)  
+                Happy Valentine’s Day, my love!
               </p>
               <img src={cuteImg} alt="cute gif" className="cute-img" />
             </>
@@ -88,7 +92,11 @@ export default function App() {
                   Yes 💖
                 </button>
                 {!hideNo && (
-                  <button className="no-btn" onMouseEnter={handleNo} onClick={handleNo}>
+                  <button
+                    className="no-btn"
+                    onClick={handleNo}
+                    {...(!isMobile && { onMouseEnter: handleNo })} // Only desktop hover
+                  >
                     No
                   </button>
                 )}
