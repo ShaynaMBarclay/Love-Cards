@@ -1,20 +1,29 @@
 import { useState } from "react";
 import "./App.css";
+
 import cuteImg from "./assets/kiss.gif";
+import cardBg from "./assets/card.png";
 
 export default function App() {
   const [accepted, setAccepted] = useState(false);
   const [showWrong, setShowWrong] = useState(false);
+  const [hideNo, setHideNo] = useState(false);
 
   const handleNo = () => {
     setShowWrong(true);
-    setTimeout(() => setShowWrong(false), 1200);
+    setHideNo(true);
+
+    setTimeout(() => {
+      setShowWrong(false);
+      setHideNo(false);
+    }, 1200);
   };
 
   return (
     <div className="page">
       <div className="card">
         {accepted ? (
+          /* 💕 YES SCREEN */
           <>
             <h1 className="title">YAYYY 💕</h1>
 
@@ -23,11 +32,15 @@ export default function App() {
               Happy Valentine’s Day my love ✨
             </p>
 
-            <img src={cuteImg} alt="cute" className="cute-img" />
+            <img src={cuteImg} alt="cute gif" className="cute-img" />
           </>
         ) : (
+          /* 💌 QUESTION SCREEN */
           <>
             <h1 className="title">Will you be my Valentine? 💌</h1>
+
+            {/* envelope image sits between title + buttons */}
+            <img src={cardBg} alt="envelope" className="envelope-img" />
 
             <div className="buttons">
               <button
@@ -37,13 +50,15 @@ export default function App() {
                 Yes 💖
               </button>
 
-              <button
-                className="no-btn"
-                onMouseEnter={handleNo}
-                onClick={handleNo}
-              >
-                No
-              </button>
+              {!hideNo && (
+                <button
+                  className="no-btn"
+                  onMouseEnter={handleNo}
+                  onClick={handleNo}
+                >
+                  No
+                </button>
+              )}
             </div>
           </>
         )}

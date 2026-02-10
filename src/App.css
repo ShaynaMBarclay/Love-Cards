@@ -24,26 +24,32 @@ body {
 /* center card */
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
 
-  padding: 60px 50px;
-  border-radius: 30px;
+  width: 100%;
+  max-width: 650px;
+  height: 300px !important;
 
-  width: 90%;
-  max-width: 500px;
+  padding: 10px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   text-align: center;
-
-  box-shadow: 0 20px 60px rgba(255, 105, 150, 0.25);
 }
+
 
 /* title */
 .title {
   font-family: "Pacifico", cursive;
-  font-size: 2.8rem;
+  font-size: 2rem;
   color: #ff4f8b;
-  margin-bottom: 40px;
+ 
 }
 
 /* message */
@@ -123,4 +129,11 @@ button {
   margin-top: 15px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.no-btn {
+  background: white;
+  color: #ff4f8b;
+  border: 2px solid #ff4f8b;
+  transition: 0.2s ease, opacity 0.2s ease;
 }
