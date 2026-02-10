@@ -16,13 +16,43 @@ body {
 
 /* whole page */
 .page {
-  height: 100vh;
+    min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
   background: #ffd1e8;
   overflow: hidden;
   cursor: url("/cursor.png"), auto;
+}
+
+
+/* ===== Custom Scrollbar ===== */
+.page::-webkit-scrollbar {
+  width: 12px; /* width of scrollbar */
+}
+
+.page::-webkit-scrollbar-track {
+  background: #ffe9f3; /* track background */
+  border-radius: 6px;
+}
+
+.page::-webkit-scrollbar-thumb {
+  background: #ff4f8b; /* scroll thumb color */
+  border-radius: 6px;
+  box-shadow: 0 0 5px pink;
+  transition: 0.2s;
+}
+
+.page::-webkit-scrollbar-thumb:hover {
+  background: #ff6b81;
+  box-shadow: 0 0 8px pink;
+}
+
+/* For Firefox */
+.page {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4f8b #ffe9f3;
 }
 
 /* center card */
