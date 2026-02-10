@@ -22,52 +22,42 @@ export default function App() {
   };
 
   const handleYes = () => {
-    setShowAnimation(true);   // hide card
-    setShowBigHeart(true);    // show big heart
-
-    // After heart animation, show accepted screen with fade
+    setShowAnimation(true);  
+    setShowBigHeart(true);   
     setTimeout(() => {
       setShowBigHeart(false);
       setShowAnimation(false);
-      setAccepted(true); // triggers fade-in
-    }, 1200); // duration matches heart animation
+      setAccepted(true); 
+    }, 1200); 
   };
 
   return (
     <div className="page">
-      {/* Floating glowing hearts */}
-      <div className="hearts-container">
-        {[...Array(40)].map((_, i) => {
-          const size = Math.random() * 20 + 20;
-          const x = Math.random() * window.innerWidth;
-          const delay = Math.random() * 5;
-          const duration = Math.random() * 5 + 5;
-          const color = Math.random() > 0.5 ? "#ff1a1a" : "#ff66a3";
-          const startY = Math.random() * window.innerHeight;
+   <div className="hearts-container">
+  {[...Array(30)].map((_, i) => {
+    const color = Math.random() > 0.5 ? "#ff4f8b" : "#ff6b81";
+    const size = Math.random() * 24 + 16; // 16px to 40px
+    const top = Math.random() * 100; // starting vertical position
 
-          return (
-            <span
-              key={i}
-              className="heart-char"
-              style={{
-                fontSize: size + "px",
-                left: x + "px",
-                bottom: startY + "px",
-                animationDelay: delay + "s",
-                animationDuration: duration + "s",
-                color: color,
-                textShadow: `
-                  0 0 10px #ffc0cb, 
-                  0 0 20px #ffc0cb, 
-                  0 0 30px #ffc0cb
-                `,
-              }}
-            >
-              ♡
-            </span>
-          );
-        })}
-      </div>
+    return (
+      <span
+        key={i}
+        className="heart-char"
+        style={{
+          "--left": Math.random() * 100 + "vw",
+          "--size": size + "px",
+          "--color": color,
+          "--top": top + "vh",   
+          "--delay": Math.random() * 5 + "s",
+          "--duration": Math.random() * 5 + 5 + "s",
+        }}
+      >
+        ♡
+      </span>
+    );
+  })}
+</div>
+
 
       {/* Big heart animation overlay */}
       {showBigHeart && <div className="big-heart">❤️</div>}
@@ -79,8 +69,13 @@ export default function App() {
             <>
               <h1 className="title">YAYYY 💕</h1>
               <p className="message">
-                You just made me the happiest human alive 🥺💗  
-                Happy Valentine’s Day my love ✨
+                  You just made my heart do a happy dance! 🥰  
+                  Every time I think of you, I get all giddy like a kid on candy day 🍬.  
+                  Thank you for being the sweetest part of my life, the jelly to my peanut butter,  
+                  the twinkle in my silly little eyes ✨💖  
+                  I’m so lucky to have you… and I promise to keep making you smile  
+                  (even if it’s just with bad jokes and too many hearts 😘💌)  
+                  Happy Valentine’s Day, my love!
               </p>
               <img src={cuteImg} alt="cute gif" className="cute-img" />
             </>
