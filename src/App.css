@@ -22,32 +22,44 @@ body {
   align-items: center;
   overflow-y: auto;
   background: #ffd1e8;
-  overflow: hidden;
   cursor: url("/cursor.png"), auto;
 }
 
+/* Apply to html instead of body */
+html {
+  overflow-y: auto;
 
-/* ===== Custom Scrollbar ===== */
-.page::-webkit-scrollbar {
-  width: 12px; /* width of scrollbar */
+  /* Custom Scrollbar for Webkit browsers */
 }
 
-.page::-webkit-scrollbar-track {
-  background: #ffe9f3; /* track background */
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #ffe9f3;
   border-radius: 6px;
 }
 
-.page::-webkit-scrollbar-thumb {
-  background: #ff4f8b; /* scroll thumb color */
+html::-webkit-scrollbar-thumb {
+  background: #ff4f8b;
   border-radius: 6px;
   box-shadow: 0 0 5px pink;
   transition: 0.2s;
 }
 
-.page::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover {
   background: #ff6b81;
   box-shadow: 0 0 8px pink;
 }
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4f8b #ffe9f3;
+}
+
+
 
 /* For Firefox */
 .page {
